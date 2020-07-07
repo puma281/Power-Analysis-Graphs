@@ -1,0 +1,11 @@
+#writing directory
+wdir = getwd()
+filpth = paste(wdir,"/household_power_consumption.txt",sep = "")
+powncs = read.table(filpth,sep = ";",header = TRUE)
+date1 = c("1/2/2007")
+date2 = c("2/2/2007")
+dated = c(date1,date2)
+powncs17 = subset(powncs,(Date == date1))
+powncs27 = subset(powncs,Date == date2)
+findata = rbind(powncs17,powncs27)                  
+write.table(findata,file = "reqdata.txt")
