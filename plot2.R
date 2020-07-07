@@ -1,0 +1,7 @@
+data = read.table("reqdata.txt",header = TRUE,sep = " ")
+grp = gl(2,1440,labels = c("Thursday","Friday"))
+data$Dated = strptime(paste(data$Date,data$Time),format = "%d/%m/%Y %H:%M:%S")
+data$day = weekdays(data$Dated)
+plot(data$Dated,as.character(data$Global_active_power),type = "l",ylab = "Global Active Power (kilowatts)",xlab = " ")
+dev.copy(png,file = "plot2.png")
+dev.off()
